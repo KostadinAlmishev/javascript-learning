@@ -212,3 +212,29 @@ alert( isAdmin );
 outer:
 for (var i = 0; i < 3; i++) { ... }
 ```
+
+## 2.20 Именованные функциональные выражения
+
+```js
+var f = function sayHi(name) {
+  alert( sayHi ); // изнутри функции - видно (выведет код функции)
+};
+
+alert( sayHi ); // снаружи - не видно (ошибка: undefined variable 'sayHi')
+```
+
+```js
+var test = function sayHi(name) {
+  sayHi = "тест"; // попытка перезаписи (use strict выдает ошибка)
+  alert( sayHi ); // function... (перезапись не удалась)
+};
+
+test();
+```
+
+```js
+// Named Function Expression!
+(function g() { return 1; });
+
+alert(g);  // Ошибка!
+```
